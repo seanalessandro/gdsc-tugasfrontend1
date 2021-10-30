@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        table{
+            border: 1px solid black;
+        }
+        td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body id="body">
+    
+</body>
+</html>
+
+<script type="text/javascript">
+    const movie = [
+        {
+            nama : "No Time to Die",
+            deskripsi : "James Bond has left active service. His peace is short-lived when Felix Leiter, an old friend from the CIA, turns up asking for help, leading Bond onto the trail of a mysterious villain armed with dangerous new technology."
+        },
+        {
+            nama : "Dune",
+            deskripsi : "Feature adaptation of Frank Herbert's science fiction novel, about the son of a noble family entrusted with the protection of the most valuable asset and most vital element in the galaxy."
+        },
+        {
+            nama : "Skyfall",
+            deskripsi : "James Bond's loyalty to M is tested when her past comes back to haunt her. When MI6 comes under attack, 007 must track down and destroy the threat, no matter how personal the cost."
+        },
+        {
+            nama : "Free Guy",
+            deskripsi : "A bank teller discovers that he's actually an NPC inside a brutal, open world video game."
+        },
+        {
+            nama : "Shang-Chi",
+            deskripsi : "Shang-Chi, the master of weaponry-based Kung Fu, is forced to confront his past after being drawn into the Ten Rings organization."
+        },
+        //Deskripsi didapat dari website imdb.com
+    ] 
+    
+    $(document).ready(function(){
+    let table = document.createElement('table');
+    let thead = document.createElement('thead');
+    let tbody = document.createElement('tbody');
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+    
+    document.getElementById('body').appendChild(table);
+
+    let row1 = document.createElement('tr');
+    let heading1 = document.createElement('th');
+    heading1.innerHTML = "Movie Name";
+
+    row1.appendChild(heading1);
+    thead.appendChild(row1);
+
+
+    for(let i = 0; i < movie.length; i++)
+    {
+        let row = document.createElement('tr');
+        let row_data = document.createElement('td');
+        row_data.innerHTML = movie[i].nama;
+        row_data.setAttribute('id-mov',i);
+        row.appendChild(row_data);
+        tbody.appendChild(row);
+    }
+
+    $('td').click(function(){
+        var id_mov = $(this).attr("id-mov");
+        var win = window.open();
+        win.document.body.innerHTML = "Nama : " + movie[id_mov].nama + "<br> Deskripsi : " + movie[id_mov].deskripsi;
+        
+    })
+    })
+</script>
